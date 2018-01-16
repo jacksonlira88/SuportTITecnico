@@ -1,0 +1,12 @@
+<resources>
+    <string name="app_name">Suporte TI - Técnico</string>
+    <string name="login">Código Login</string>
+    <string name="entrar">Entrar</string>
+
+    <string name="nomeTecnico">Nome Completo do Técnico</string>
+    <string name="nomeEmpresa">Nome da empresa</string>
+    <string name="funcao">Funcão</string>
+    <string name="btCadastrarTecnico">Cadastrar</string>
+
+    <string name="novo_setor">Novo setor</string>
+</resources>

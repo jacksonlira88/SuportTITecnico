@@ -1,0 +1,16 @@
+<resources>
+    <string name="app_name">Suporte TI - Técnico</string>
+    <string name="login">Código Login</string>
+    <string name="entrar">Entrar</string>
+    <string name="btActCadastro">Cadastre-se aqui!</string>
+
+    <string name="nomeTecnico">Nome do Técnico</string>
+    <string name="nomeEmpresa">Nome da empresa</string>
+    <string name="funcao">Função</string>
+    <string name="btCadastrarTecnico">Cadastrar</string>
+    <string name="tvMensagemSenha">Senha para login na aplicação, guarde-a com segurança.</string>
+    <string name="tvTecnicoCadastrado">Técnico cadastrado com sucesso!!</string>
+    <string name="tvFalhaDeRede">Falha na rede!</string>
+
+    <string name="novo_setor">Novo setor</string>
+</resources>
