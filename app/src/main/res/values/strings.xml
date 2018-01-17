@@ -13,4 +13,6 @@
     <string name="tvFalhaDeRede">Falha na rede!</string>
 
     <string name="novo_setor">Novo setor</string>
+    <string name="ERR_SENHA_NAO_CADASTRADA">Senha não cadastrada!</string>
+
 </resources>

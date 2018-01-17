@@ -1,6 +1,8 @@
 package com.suporttiapp.suporttitecnico;
 
 import android.annotation.SuppressLint;
+import android.content.Context;
+import android.content.SharedPreferences;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -23,6 +25,11 @@ import org.json.JSONObject;
 import static android.widget.Toast.LENGTH_SHORT;
 
 public class Registrar extends AppCompatActivity {
+    SharedPreferences sharedPreferences;
+    SharedPreferences.Editor editor;
+    private static final String PREFER_NAME = "Ref";
+    private static final String SENHA_ACESSO = "senha";
+
     private String senha = null;
     private RequestQueue rQueue;
     private EditText nomeTecnico;
@@ -31,13 +38,14 @@ public class Registrar extends AppCompatActivity {
     private Button btCadastrarTecnico;
     private TextView mgsRecebeSenha;
     private TextView tvTecnicoCadastrado;
-
     private TextView senhaView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_registrar);
+
+        rQueue = Volley.newRequestQueue(this);
 
         nomeTecnico = findViewById(R.id.etNomeTecnico);
         nomeEmpresa = findViewById(R.id.etNomeEmpresa);
@@ -46,17 +54,18 @@ public class Registrar extends AppCompatActivity {
         mgsRecebeSenha = findViewById(R.id.tvMensagemSenha);
         tvTecnicoCadastrado = findViewById(R.id.tvTecnicoCadastrado);
 
-        rQueue = Volley.newRequestQueue(this);
         btCadastrarTecnico = findViewById(R.id.btCadastrarTecnico);
         btCadastrarTecnico.setOnClickListener(new View.OnClickListener() {
-            //@SuppressLint("WrongConstant")
+
             @Override
             public void onClick(View view) {
-
                 requisicao();
                 nomeTecnico.setText("");
                 nomeEmpresa.setText("");
                 nomefuncao.setText("");
+
+
+
 
             }
         });
@@ -76,10 +85,24 @@ public class Registrar extends AppCompatActivity {
                     @Override
                     public void onResponse(JSONObject response) {
                         try {
-                            senha = response.getString("senha");
+                           // String senhaRecebida = response.getString("senha");
+
                             tvTecnicoCadastrado.setText(R.string.tvTecnicoCadastrado);
                             mgsRecebeSenha.setText(R.string.tvMensagemSenha);
-                            senhaView.setText(senha);
+                            senhaView.setText(response.getString("senha"));
+
+                            sharedPreferences  = getSharedPreferences(PREFER_NAME, Context.MODE_PRIVATE);
+                            editor = sharedPreferences.edit();
+                            editor.putString(SENHA_ACESSO, senhaView.getText().toString());
+                            editor.commit();
+
+
+                            SharedPreferences preferences = getSharedPreferences(PREFER_NAME,Context.MODE_PRIVATE);
+                            String senhaSalva = preferences.getString(SENHA_ACESSO, "");
+                            Toast toast = Toast.makeText(getApplicationContext(), senhaSalva, Toast.LENGTH_SHORT);
+                            toast.show();
+
+
 
                         } catch (JSONException e) {
                             e.printStackTrace();
@@ -98,4 +121,7 @@ public class Registrar extends AppCompatActivity {
     }// fim requisicao
 
 
+    private void salvarPreferencias(){
+
+    }
 }

@@ -5,4 +5,31 @@ package com.suporttiapp.suporttitecnico.servico;
  */
 
 public class RequisicaoREST {
+
+
+    public void cadastrarSetor(){
+
+    }
+    public void cadastrarCliente(){
+
+    }
+
+    public void listarChamdoEmAberto(){
+
+    }
+
+    public void listarChamdoEncerrrado(){
+
+    }
+
+    public void iniciarChamado(){
+
+    }
+
+    public void finalizarChamado(){
+
+    }
+
+
+
 }
